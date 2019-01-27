@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,8 +75,9 @@ public class MainActivity extends AppCompatActivity{
             List<String> weekForecast = new ArrayList<String>(Arrays.asList(data));
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-            ArrayAdapter<String> forecastAdapter = new ArrayAdapter<>(getActivity(),  R.layout.list_item_forecast, R.id.listview_forecast, weekForecast);
-            
+            ArrayAdapter<String> forecastAdapter = new ArrayAdapter<>(getActivity(), R.layout.list_item_forecast, weekForecast);
+            ListView forecastListView =  rootView.findViewById(R.id.listview_forecast);
+            forecastListView.setAdapter(forecastAdapter);
             return rootView;
         }
     }
